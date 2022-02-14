@@ -9,6 +9,7 @@ class BasketPosition //позиция одного товара в заказе
     public function __construct($product, $quantity)
     {
         $this->product = $product;
+        $product = new Product($this->getProduct(), $this->getPrice());
         $this->quantity = $quantity;
     }
 
@@ -30,6 +31,6 @@ class BasketPosition //позиция одного товара в заказе
     //возвращает стоимость позиции
     public function getPrice()
     {
-        return $this->product->getPrice() + $this->getQuantity();
+        return $this->product->getPrice() * $this->getQuantity();
     }
 }

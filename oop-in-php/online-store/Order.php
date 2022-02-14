@@ -1,13 +1,11 @@
 <?php
 
-require('Basket.php');
-
 class Order // заказ
 {
     public $basket; // корзина 
     public $shippingCost; // цена доставки
 
-    public function __construct($basket, $shippingCost = 0)
+    public function __construct(Basket $basket, $shippingCost = 0)
     {
         $this->basket = $basket;
         $this->shippingCost = $shippingCost;
@@ -24,12 +22,19 @@ class Order // заказ
     // и стоимости доставки заказа      ДОБАВИЛ 
     public function getPrice()
     {
-        $priceBasket = 0;
+        return (($this->basket->getPrice()) + ($this->shippingCost));
+
+        // СТАРЫЙ КОД //
+        //// из чего состоит общая стоимость заказа?
+        // сумма стоимости корзины + стоимость доставки заказа
+        //// где взять стоимость корзины? 
+
+        /* $priceBasket = 0;
 
         foreach ($this->basket as $basketItem) {
             $priceBasket += $this->basket->getPrice();
         }
         $priceBasket += $this->shippingCost;
-        return $priceBasket;
+        return $priceBasket; */
     }
 }

@@ -12,12 +12,25 @@ class Basket // корзина
     //объединение количества товаров можно не реализовывать
     public function addProduct(Product $product, $quantity)
     {
-        $newPosition = $product->getName();
+        // создаю новую позицию
+        $newPosition = new BasketPosition($product, $quantity);
+
+        // добавляю её в корзину
+        $this->basket[][0] = $newPosition;
+
+        //  ПРОШЛЫЙ КОД //
+        /* echo "<pre>";
+        var_dump($this->basket);
+        echo "</pre>"; */
+        /*  $newPosition = $product->getName();
         $i = 0;
         do {
-            $basket[] = $newPosition;
+            $this->basket[$i] = $newPosition;
             $i++;
         } while ($i < $quantity);
+        echo "<pre>";
+        var_dump($this->basket);
+        echo "</pre>"; */
     }
 
     //возвращает стоимость всех позиций в корзине.                              
@@ -27,11 +40,32 @@ class Basket // корзина
     //выводим переменную  
     public function getPrice()
     {
-        $price = 0;
-        foreach ($this->basket as $product) {
-            $price += $this->$product->price;
+        $endPrice = 0;
+        // перебрать массив списка цен в позициях в корзине
+
+        foreach ($this->basket as $price) {
+
+            // записать значения цены в переменную
+            $endPrice += $price[0]["product"]['price'];
+
+            //вернуть цену
+            return $endPrice;
         }
-        return $price;
+
+        // СТАРЫЙ КОД //
+        // записать значения цены в переменную 
+        // $price += _____;
+
+        //вернуть цену
+
+        //    return $price; 
+
+
+        /*  $price = 0;
+        foreach ($this->basket as $product) {
+            $price += $product->price;
+        }
+        return $price; */
     }
 
     //выводит или возвращает информацию о корзине в виде строки:                
@@ -40,7 +74,7 @@ class Basket // корзина
     public function describe()
     {
         foreach ($this->basket as $product) {
-            return $product . " - " . $product->getPrice() . " - " . $product->getQuantity();
+            return $product[0]["product"]['name'] . " - " . $product[0]["product"]['price'] . " - " . $product[1]["quantity"];
         }
     }
 }
