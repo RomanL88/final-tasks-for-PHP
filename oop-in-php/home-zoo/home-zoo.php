@@ -12,6 +12,9 @@ $newDog2 = new nameDog\Dog("Полкан");
 
 $newFish1 = new nameFish\Fish("Мира");
 $animals = [$newCat1, $newCat2, $newDog1, $newDog2, $newFish1];
-echo '<pre>';
-var_dump($animals);
-echo '</pre>';
+
+foreach ($animals as $animal) {
+    echo "<pre>";
+    echo ($animal->name);
+    echo "</pre>";
+}
