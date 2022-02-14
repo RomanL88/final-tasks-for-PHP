@@ -16,10 +16,9 @@ class HungryCat
 
     public function eat($food)
     {
-        $this->food = $food;
         echo "Голодный кот $this->name, особые приметы: цвет - $this->color, съел $food" . PHP_EOL;
 
-        if ($this->favoriteFood == $this->food) {
+        if ($this->favoriteFood == $food) {
             echo "  и замурчал 'мррррр' от своей любимой еды" . PHP_EOL;
         }
         echo '<br>';
