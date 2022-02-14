@@ -3,7 +3,7 @@ require("Order.php");
 require("Product.php");
 require("BasketPosition.php");
 require("Basket.php");
-
+require("../NotifFTC/sendMessage.php");
 
 // новая корзина
 $basket = new Basket;
@@ -22,30 +22,19 @@ $basket->addProduct($product3, 1);
 
 //Создайте заказ на основе этой корзины таким образом
 $order = new Order($basket);
+
+
+$newUser = new User("Николай Николаич", "email@mail.ru", 22, 89999999);
+
+notify($newUser, "Для вас создан заказ, на сумму: " . $order->getPrice() . "<br>" . " Состав: " . "<br>" . $basket->describe());
+
+/* function strForMessage () {
+echo "Для вас создан заказ, на сумму: " . $order->getPrice() . "<br>" . " Состав: " . "<br>" . $basket->describe();
+echo   " Состав: " . "<br>";
+echo $basket->describe();
+} */
+
+/* 
 echo "<pre>";
-var_dump($order);
-echo "</pre>";
-
-//Выведите информацию о корзине этого заказа 
-//и выведите общую стоимость заказа.
-
-
-echo "Заказ, на сумму: " . $order->getPrice() . " Состав: " . $order->getBasket() . "";
-
-/* echo "<pre>";
 var_dump($basket);
 echo "</pre>"; */
-//echo "Заказ, на сумму: " . $basket->getPrice() . " Состав: " . $basket->describe();
-
-
-/* $productObject = new Product(1, 123);
-$test = new BasketPosition($productObject, 12);
-
-$order = new Order($basket);
-$order->shippingCost = 400;
-$order->getBasket(); */
-
-
-
-//Выведите информацию о корзине этого заказа и выведите общую стоимость заказа.
-//echo "Заказ, на сумму: " . $order->getPrice() . " Состав: " . $order->getBasket($basket);

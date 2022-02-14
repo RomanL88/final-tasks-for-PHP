@@ -13,24 +13,11 @@ class Basket // корзина
     public function addProduct(Product $product, $quantity)
     {
         // создаю новую позицию
+
         $newPosition = new BasketPosition($product, $quantity);
 
         // добавляю её в корзину
-        $this->basket[][0] = $newPosition;
-
-        //  ПРОШЛЫЙ КОД //
-        /* echo "<pre>";
-        var_dump($this->basket);
-        echo "</pre>"; */
-        /*  $newPosition = $product->getName();
-        $i = 0;
-        do {
-            $this->basket[$i] = $newPosition;
-            $i++;
-        } while ($i < $quantity);
-        echo "<pre>";
-        var_dump($this->basket);
-        echo "</pre>"; */
+        $this->basket[] = $newPosition;
     }
 
     //возвращает стоимость всех позиций в корзине.                              
@@ -43,14 +30,15 @@ class Basket // корзина
         $endPrice = 0;
         // перебрать массив списка цен в позициях в корзине
 
-        foreach ($this->basket as $price) {
+        foreach ($this->basket as $basketPosition) {
 
             // записать значения цены в переменную
-            $endPrice += $price[0]["product"]['price'];
+            $endPrice += $basketPosition->getPrice();
 
             //вернуть цену
-            return $endPrice;
+
         }
+        return $endPrice;
 
         // СТАРЫЙ КОД //
         // записать значения цены в переменную 
@@ -73,8 +61,14 @@ class Basket // корзина
     //"<Наименование товара> - <Цена одной позиции> - <Количество>"
     public function describe()
     {
-        foreach ($this->basket as $product) {
-            return $product[0]["product"]['name'] . " - " . $product[0]["product"]['price'] . " - " . $product[1]["quantity"];
+        $str = " ";
+        foreach ($this->basket as $basketPosition) {
+            $str .= "Наименование товара: " . $basketPosition->getProduct() . " - Цена одной позиции: " . $basketPosition->getPrice() . " -  Количество: " . $basketPosition->getQuantity() . "<br>";
+            /* var_dump($str); */
+            /*  echo "<pre>";
+            echo ($basketPosition->getProduct());
+            echo "</pre>"; */
         }
+        return $str;
     }
 }

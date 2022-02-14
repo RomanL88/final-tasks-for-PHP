@@ -9,14 +9,13 @@ class BasketPosition //позиция одного товара в заказе
     public function __construct($product, $quantity)
     {
         $this->product = $product;
-        $product = new Product($this->getProduct(), $this->getPrice());
         $this->quantity = $quantity;
     }
 
     //возвращает наименование товара в этой позиции
     public function getProduct()
     {
-        return $this->product;
+        return $this->product->name;
     }
 
     //возвращает количество товаров в этой позиции
