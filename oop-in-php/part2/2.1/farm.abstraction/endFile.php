@@ -21,56 +21,24 @@ $farmer = new Farmer;
 class Dog extends Animal
 {
     public $name = 'собака ';
-    public function getName()
-    {
-        return $this->name;
-    }
-    public function isBird()
-    {
-        return false;
-    }
 }
 
 // наследник животного 2
 class Fox extends Animal
 {
     public $name = 'лис ';
-    public function getName()
-    {
-        return $this->name;
-    }
-    public function isBird()
-    {
-        return false;
-    }
 }
 
 // наследник птицы 1
 class sparrow extends Bird
 {
     public $name = 'воробей ';
-    public function getName()
-    {
-        return $this->name;
-    }
-    public function isBird()
-    {
-        return true;
-    }
 }
 
 // наследник птицы 2
 class swallow extends Bird
 {
     public $name = 'ласточка ';
-    public function getName()
-    {
-        return $this->name;
-    }
-    public function isBird()
-    {
-        return true;
-    }
 }
 
 $swallow = new swallow;
