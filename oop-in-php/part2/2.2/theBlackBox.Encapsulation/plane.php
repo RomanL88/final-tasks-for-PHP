@@ -15,7 +15,10 @@ class Plane
      */
     public function flyAndCrush()
     {
-        $this->blackBox->addLog('катастрофа, самолёт падает');
+        $this->addLog('взлетаем');
+        $this->addLog('летим');
+        $this->addLog('турбулентность');
+        $this->addLog('катастрофа, самолёт падает');
     }
 
 
@@ -26,7 +29,7 @@ class Plane
     private function addLog(string $message)
     {
         (string)$dateToday = date('Y.m.d H:i:s' . ' ');
-        $message = $dateToday . $message;
+        $message = $dateToday . '| ' . $message;
         $this->blackBox->addLog($message);
     }
 

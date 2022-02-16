@@ -10,20 +10,14 @@ class Engineer
 
     /**
      * пробует дешифровать чёрный ящик 
-     * построчно выводит результат дешифровки. - ?? КАК ЭТО СДЕЛАТЬ
+     * построчно выводит результат дешифровки. 
      */
     public function decodeBox(BlackBox $blackBox)
     {
         $logs = $blackBox->getData($this->accessLevel);
         foreach ($logs as $log) {
-            //var_dump($logs);
-            for ($i = 0; $i < count($logs); $i++) {
-                echo ($log[$i]);
-                echo '<br>';
-            }
+            echo $log;
+            echo '<br>';
         }
-        //  old code //
-        //// пробует расшифровать
-        // return $blackBox->getData($this->accessLevel);
     }
 }

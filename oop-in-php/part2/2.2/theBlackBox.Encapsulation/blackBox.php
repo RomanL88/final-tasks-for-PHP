@@ -9,7 +9,7 @@ class BlackBox
     public function addLog(string $message)
     {
         (string) $serialNumber = count($this->data) + 1;
-        $message = $serialNumber . $message;
+        $message = $serialNumber . '| ' . $message;
         //добавляет новую запись в лог
         $this->data[] = $message;
     }
@@ -25,7 +25,7 @@ class BlackBox
             echo 'Ваш уровень доступа не позволяет получить больше данных' . '<br>';
             return [$this->data[0]];
         } else {
-            return [$this->data];
+            return $this->data;
         }
     }
 }
