@@ -18,14 +18,19 @@ class BlackBox
     // возвращает массив с логами ящика
     public function getData(int $accessLevel): array
     {
-        if ($accessLevel <= 1) {
-            echo 'Доступ запрещен';
-            return [];
-        } elseif ($accessLevel > 1 && $accessLevel <= 3) {
-            echo 'Ваш уровень доступа не позволяет получить больше данных' . '<br>';
-            return [$this->data[0]];
-        } else {
-            return $this->data;
+        switch ($accessLevel) {
+            case ($accessLevel <= 1):
+                echo 'Доступ запрещен';
+                return [];
+                break;
+            case ($accessLevel > 1 && $accessLevel <= 3):
+                echo 'Ваш уровень доступа не позволяет получить больше данных' . '<br>';
+                return [$this->data[0]];
+                break;
+
+            default:
+                return $this->data;
+                break;
         }
     }
 }
