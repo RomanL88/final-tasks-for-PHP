@@ -4,6 +4,7 @@ class BlackBox
     //лог записей полёта самолёта
     private array $data = [];
 
+    //добавить запись в лог
     //к строке $message в начале должен дописаться порядковый номер этой записи в логе
     public function addLog(string $message)
     {
@@ -18,11 +19,13 @@ class BlackBox
     public function getData(int $accessLevel): array
     {
         if ($accessLevel <= 1) {
-            return 'Доступ запрещен';
+            echo 'Доступ запрещен';
+            return [];
         } elseif ($accessLevel > 1 && $accessLevel <= 3) {
-            return (($this->data[0]) && ('<br>' . 'Ваш уровень доступа не позволяет получить больше данных'));
+            echo 'Ваш уровень доступа не позволяет получить больше данных' . '<br>';
+            return [$this->data[0]];
         } else {
-            return $this->data;
+            return [$this->data];
         }
     }
 }

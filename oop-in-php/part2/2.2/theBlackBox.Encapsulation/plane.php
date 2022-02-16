@@ -15,7 +15,6 @@ class Plane
      */
     public function flyAndCrush()
     {
-        $this->blackBox->addLog($this->message);
         $this->blackBox->addLog('катастрофа, самолёт падает');
     }
 
